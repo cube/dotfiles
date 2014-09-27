@@ -1,0 +1,6 @@
+\set PROMPT1 '%n@%/%# '
+\timing
+\encoding unicode
+
+\set G '\\set QUIET 1\\x\\g\\x\\set QUIET 0' # use it like this 'select * from dupa :G'
+\pset null '<NULL>'

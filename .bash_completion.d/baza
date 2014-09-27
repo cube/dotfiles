@@ -1,0 +1,13 @@
+_mysql_credentials() {
+  local cur configured_mysql_clients
+  configured_mysql_clients=$(\grep "\[client" ~/.my.cnf | cut -c 8- | tr -d ']')
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  COMPREPLY=( $(compgen -W "${configured_mysql_clients}" -- ${cur}) )
+  return 0
+}
+
+baza() {
+  \mysql --defaults-group-suffix=$1 --default-character-set=utf8 --show-warnings "${@:2}"
+}
+
+complete -F _mysql_credentials baza
